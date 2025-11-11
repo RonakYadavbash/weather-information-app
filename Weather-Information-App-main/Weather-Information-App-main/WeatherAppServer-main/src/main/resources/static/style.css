@@ -1,0 +1,246 @@
+:root {
+  --bg1: #0f172a;
+  --bg2: #0b132b;
+  --accent: #4f46e5;
+  --muted: #9aa4b2;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", system-ui, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--bg1) 0%, var(--bg2) 100%);
+  color: #e6eef8;
+  overflow: hidden;
+  transition: background 1.5s ease-in-out, color 1s ease-in-out, filter 1.5s ease-in-out;
+  transform-origin: center;
+
+  background-size: 200% 200%;
+}
+
+body.transitioning {
+  filter: brightness(1.1) blur(2px);
+  transform: scale(1.02);
+}
+
+.app {
+  width: 420px;
+  background: rgba(255, 255, 255, 0.02);
+  border-radius: 16px;
+  padding: 22px;
+  box-shadow: 0 10px 30px rgba(2, 6, 23, 0.6);
+  transition: background 1s ease, transform 0.6s ease;
+}
+
+.fade-in {
+  animation: fadeIn 1s ease;
+}
+
+.header h1 {
+  margin: 0;
+  font-size: 22px;
+  letter-spacing: 0.2px;
+}
+
+.subtitle {
+  margin: 6px 0 18px 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.search {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.search input {
+  flex: 1;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: none;
+  background: rgba(255, 255, 255, 0.05);
+  color: inherit;
+  outline: none;
+  font-size: 15px;
+}
+
+.search button {
+  background: linear-gradient(180deg, var(--accent), #3f37c9);
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.search button:hover {
+  transform: scale(1.05);
+}
+
+.secondary {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: var(--muted);
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 12px;
+  padding: 16px;
+  margin-top: 10px;
+  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.5);
+  transition: opacity 0.8s ease, transform 0.6s ease;
+}
+
+.icon {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 8px auto;
+}
+
+.fade {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.fade.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-top: 12px;
+  color: var(--muted);
+}
+
+.grid div {
+  background: rgba(255, 255, 255, 0.03);
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.status {
+  margin-top: 12px;
+  color: #a6f3b0;
+  font-weight: 600;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+.hidden {
+  display: none;
+}
+
+/* --- Expansion animation when user searches --- */
+.app {
+  transform: scale(0.85);
+  opacity: 0.9;
+  transition: all 0.6s ease-in-out;
+}
+
+/* Expanded when search is done */
+.app.expanded {
+  transform: scale(1);
+  opacity: 1;
+}
+
+/* Optional subtle glow on expansion */
+.app.expanded {
+  box-shadow: 0 15px 35px rgba(79, 70, 229, 0.4);
+}
+
+/* --- Realistic Weather-Based Background Themes --- */
+
+
+/* ☀ Subtle sunlight glow overlay */
+/* ☀ Clear / Sunny */
+body.sunny,
+body.clear {
+  background: linear-gradient(135deg, #87ceeb 0%, #00bfff 40%, #ffe259 100%);
+  background-size: 200% 200%;
+  animation: slideGradient 14s ease-in-out infinite;
+  color: #fffdf5;
+}
+
+
+
+/* ☁ Cloudy — soft gray with a cool blue undertone */
+body.cloudy {
+  background: linear-gradient(135deg, #d7d2cc 0%, #304352 100%);
+  background-size: 300% 300%;
+  animation: skyShift 3s ease-in-out infinite;
+  color: #f0f0f0;
+}
+
+
+/* ❄ Snow — pale white-blue with frosty highlights */
+body.snow {
+  background: linear-gradient(135deg, #e0f7fa 0%, #ffffff 100%);
+  background-size: 300% 300%;
+  animation: skyShift 3s ease-in-out infinite;
+  color: #2b3a42;
+}
+
+
+
+/* 🌫 Mist / Fog — muted soft gray and blue */
+body.mist {
+  background: linear-gradient(135deg, #a7a7a7 0%, #e1e1e1 100%);
+  background-size: 300% 300%;
+  animation: skyShift 3s ease-in-out infinite;
+  color: #333;
+}
+
+
+
+/* ⛈ Thunderstorm — deep purple-blue and electric glow */
+body.rainy, body.thunder {
+  background: linear-gradient(135deg, #463b33 0%, #2f2620 50%, #1e1a16 100%);
+  background-size: 300% 300%;
+  animation: skyShift 3s ease-in-out infinite;
+  color: #f3e6c6;
+}
+
+
+
+
+
+body.theme-transition {
+  transition: background 1.8s ease-in-out, color 1.2s ease-in-out;
+}
+
+.app {
+  transition: background 1s ease-in-out, transform 0.6s ease, box-shadow 1s ease-in-out;
+}
+
+/* 🌤 Moving gradient animation for realistic sky motion */
+@keyframes slideGradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
